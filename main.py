@@ -39,25 +39,20 @@ def send_request_deluge(method, params=None):
     REQUEST_ID += 1
 
     try:
-
         response = requests.post(
             'http://{}/json'.format(DELUGE_ADDRESS),
             json={'id': REQUEST_ID, 'method': method, 'params': params or []},
             cookies=COOKIES)
-
     except requests.exceptions.ConnectionError:
         raise Exception('WebUI seems to be unavailable')
 
     data = response.json()
-
     error = data.get('error')
-
+    
     if error:
         msg = error['message']
-
         if msg == 'Unknown method':
             msg += '. Check WebAPI is enabled.'
-
         raise Exception('API response: %s' % msg)
         send_later(msg)
 
