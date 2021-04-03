@@ -21,7 +21,7 @@ Enable WebAPI in your Deluge client. Check [this](https://pypi.org/project/delug
 Create a new [Telegram bot](https://core.telegram.org/bots#6-botfather) if you haven't created one yet and retrieve the chat id. To do that you can run the docker only with the TELEGRAM_TOKEN environment variable
 
 ```bash
-docker run -e TELEGRAM_TOKEN=<telegram-bot-token> <container>
+docker run -e TELEGRAM_TOKEN=<telegram-bot-token> <docker-image>
 ```
 
 After this you can issue the _/start_ command to the bot. The bot will log the chat id to the container stdout. You can check it with this command
@@ -39,7 +39,7 @@ docker run --name delugebot \
 -e ALLOWED_IDS=<allowed-chat-ids>  \
 -e DELUGE_ADDRESS=<ip-addr> \
 -e WEPAPI_PASSWD=<passwd> \
--e TELEGRAM_TOKEN=<telegram-bot-token> <container>
+-e TELEGRAM_TOKEN=<telegram-bot-token> <docker-image>
 ```
 
 After starting the container you will need to issue the _/start_ command to the bot to initialize it.
